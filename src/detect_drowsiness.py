@@ -4,16 +4,16 @@ import pickle
 import numpy as np
 from pygame import mixer 
 
-with open('drowsiness_svm_model.pkl', 'rb') as f:
+with open('models/drowsiness_svm_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
-with open('scaler.pkl', 'rb') as f:
+with open('models/scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 #sound
 mixer.init()
 try:
-    mixer.music.load('./sound/warning5.mp3')
+    mixer.music.load('sound/warning5.mp3')
 except Exception as e:
     print(f"Lỗi nạp file âm thanh: {e}")
 

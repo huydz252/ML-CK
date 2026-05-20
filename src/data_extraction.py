@@ -38,7 +38,7 @@ def calculate_mar(landmarks, indices, w, h):
 
 # ----------------------------------------------------------------
 ROOT_DIR = "UTA_Data"  
-OUTPUT_CSV = "rldd_geometry_features.csv"
+OUTPUT_CSV = "data/rldd_geometry_features.csv'"
 
 with open(OUTPUT_CSV, mode='w', newline='') as f:
     writer = csv.writer(f)

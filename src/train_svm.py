@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import pickle
 
 print("Đang tải tập dữ liệu đặc trưng hình học...")
-df = pd.read_csv('rldd_geometry_features.csv')
+df = pd.read_csv('data/rldd_geometry_features.csv')
 
 #loại bỏ data lỗi
 df = df.dropna()
@@ -40,21 +40,13 @@ print(" Huấn luyện hoàn tất!")
 
 y_pred = model.predict(X_test_scaled)
 
-print("\n================ KẾT QUẢ ĐÁNH GIÁ TRÊN TẬP TEST ================")
-# bảng báo cáo độ chính xác chi tiết
-print(classification_report(y_test, y_pred, target_names=['Tinh tao (0)', 'Buon ngu (1)']))
-
-print("Ma trận nhầm lẫn (Confusion Matrix):")
-print(confusion_matrix(y_test, y_pred))
-
-
 print("\n[INFO] Đang đóng gói và lưu mô hình xuống ổ cứng...")
 # Lưu mô hình toán học SVM
-with open('drowsiness_svm_model.pkl', 'wb') as model_file:
+with open('models/drowsiness_svm_model.pkl', 'wb') as model_file:
     pickle.dump(model, model_file)
 
 # Lưu cả bộ chuẩn hóa Scaler để khi chạy camera thực tế cũng scale dữ liệu theo tỷ lệ tương tự
-with open('scaler.pkl', 'wb') as scaler_file:
+with open('models/scaler.pkl', 'wb') as scaler_file:
     pickle.dump(scaler, scaler_file)
 
-print(" Thành công! Đã sinh ra file 'drowsiness_svm_model.pkl' và 'scaler.pkl' trong thư mục.")
+print(" Thành công! Đã sinh ra file 'drowsiness_svm_model.pkl' và 'scaler.pkl' trong thư mục models.")
